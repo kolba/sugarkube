@@ -20,7 +20,6 @@ import (
 	"fmt"
 	"github.com/sugarkube/sugarkube/internal/pkg/constants"
 	"github.com/sugarkube/sugarkube/internal/pkg/interfaces"
-	"github.com/sugarkube/sugarkube/internal/pkg/log"
 )
 
 // Installs kapps with terraform
@@ -30,20 +29,21 @@ type TerraformInstaller struct {
 
 func (i TerraformInstaller) Install(installableObj interfaces.IInstallable, stack interfaces.IStack,
 	approved bool, dryRun bool) error {
-	log.Logger.Errorf("Not implemented - terraform install")
+	panic("Not implemented - terraform install")
 
 	// if .terraform doesn't exist, run terraform init
 
-	// if approved == false run plan
+	// if approved == false run plan passing any defined CLI params
 
-	// if approved == true run apply
+	// if approved == true run apply passing any defined CLI params (but how to separate the two, e.g.
+	// plan permits different args vs apply?)
 
 	return nil
 }
 
 func (i TerraformInstaller) Delete(installableObj interfaces.IInstallable, stack interfaces.IStack,
 	approved bool, dryRun bool) error {
-	log.Logger.Errorf("Not implemented - terraform delete")
+	panic("Not implemented - terraform delete")
 
 	// if approved == true run terraform destroy
 
@@ -52,7 +52,7 @@ func (i TerraformInstaller) Delete(installableObj interfaces.IInstallable, stack
 
 func (i TerraformInstaller) Clean(installableObj interfaces.IInstallable, stack interfaces.IStack,
 	dryRun bool) error {
-	log.Logger.Errorf("Not implemented - terraform clean")
+	panic("Not implemented - terraform clean")
 
 	// if the .terraform dir exists, delete it
 
@@ -61,7 +61,7 @@ func (i TerraformInstaller) Clean(installableObj interfaces.IInstallable, stack 
 
 func (i TerraformInstaller) Output(installableObj interfaces.IInstallable, stack interfaces.IStack,
 	dryRun bool) error {
-	log.Logger.Errorf("Not implemented - terraform output")
+	panic("Not implemented - terraform output")
 
 	// run terraform output
 
