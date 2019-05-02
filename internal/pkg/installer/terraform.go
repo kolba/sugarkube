@@ -28,23 +28,43 @@ type TerraformInstaller struct {
 	provider interfaces.IProvider
 }
 
-func (i TerraformInstaller) Install(installableObj interfaces.IInstallable, stack interfaces.IStack, approved bool, dryRun bool) error {
+func (i TerraformInstaller) Install(installableObj interfaces.IInstallable, stack interfaces.IStack,
+	approved bool, dryRun bool) error {
 	log.Logger.Errorf("Not implemented - terraform install")
+
+	// if .terraform doesn't exist, run terraform init
+
+	// if approved == false run plan
+
+	// if approved == true run apply
+
 	return nil
 }
 
-func (i TerraformInstaller) Delete(installableObj interfaces.IInstallable, stack interfaces.IStack, approved bool, dryRun bool) error {
+func (i TerraformInstaller) Delete(installableObj interfaces.IInstallable, stack interfaces.IStack,
+	approved bool, dryRun bool) error {
 	log.Logger.Errorf("Not implemented - terraform delete")
+
+	// if approved == true run terraform destroy
+
 	return nil
 }
 
-func (i TerraformInstaller) Clean(installableObj interfaces.IInstallable, stack interfaces.IStack, dryRun bool) error {
+func (i TerraformInstaller) Clean(installableObj interfaces.IInstallable, stack interfaces.IStack,
+	dryRun bool) error {
 	log.Logger.Errorf("Not implemented - terraform clean")
+
+	// if the .terraform dir exists, delete it
+
 	return nil
 }
 
-func (i TerraformInstaller) Output(installableObj interfaces.IInstallable, stack interfaces.IStack, dryRun bool) error {
+func (i TerraformInstaller) Output(installableObj interfaces.IInstallable, stack interfaces.IStack,
+	dryRun bool) error {
 	log.Logger.Errorf("Not implemented - terraform output")
+
+	// run terraform output
+
 	return nil
 }
 
