@@ -31,6 +31,10 @@ func New(name string, providerImpl interfaces.IProvider) (interfaces.IInstaller,
 		return MakeInstaller{
 			provider: providerImpl,
 		}, nil
+	case constants.InstallerTerraformInstaller:
+		return TerraformInstaller{
+			provider: providerImpl,
+		}, nil
 	default:
 		return nil, errors.New(fmt.Sprintf("Installer '%s' doesn't exist", name))
 	}
