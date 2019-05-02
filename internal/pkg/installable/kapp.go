@@ -113,6 +113,16 @@ func (k Kapp) PostDeleteActions() []structs.Action {
 	return k.getActions(false, false)
 }
 
+// Returns the name of the installer to use or the global default if not set
+func (k Kapp) GetInstallerName() string {
+	name := k.mergedDescriptor.Installer
+	if name == "" {
+		name = config.CurrentConfig.DefaultInstaller
+	}
+
+	return name
+}
+
 // Every time we add a new descriptor remerge the descriptor.
 // If `prepend` is true the new layer will be prepended to the list of layers, otherwise it'll be appended.
 // Descriptors later in the layers array will override earlier values

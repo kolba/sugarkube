@@ -18,6 +18,7 @@ package config
 
 import (
 	"github.com/stretchr/testify/assert"
+	"github.com/sugarkube/sugarkube/internal/pkg/constants"
 	"github.com/sugarkube/sugarkube/internal/pkg/log"
 	"github.com/sugarkube/sugarkube/internal/pkg/structs"
 	"path"
@@ -36,6 +37,7 @@ func TestLoadConfig(t *testing.T) {
 		JsonLogs:             false,
 		LogLevel:             "warn",
 		NumWorkers:           5,
+		DefaultInstaller:     constants.InstallerMakeInstaller,
 		OverwriteMergedLists: false,
 		Programs: map[string]structs.KappConfig{
 			"helm": {

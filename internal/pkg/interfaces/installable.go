@@ -49,4 +49,5 @@ type IInstallable interface {
 	HasOutputs() bool
 	GetLocalRegistry() IRegistry
 	SetLocalRegistry(registry IRegistry)
+	GetInstallerName() string
 }

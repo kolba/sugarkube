@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 The Sugarkube Authors
+ * Copyright 2019 The Sugarkube Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,24 +14,10 @@
  * limitations under the License.
  */
 
-package installer
+package constants
 
-import (
-	"fmt"
-	"github.com/pkg/errors"
-	"github.com/sugarkube/sugarkube/internal/pkg/constants"
-	"github.com/sugarkube/sugarkube/internal/pkg/interfaces"
-)
+const InstallerAction = "action"
+const InstallerApproved = "approved"
 
-// Factory that creates installers
-func New(name string, providerImpl interfaces.IProvider) (interfaces.IInstaller, error) {
-
-	switch name {
-	case constants.InstallerMakeInstaller:
-		return MakeInstaller{
-			provider: providerImpl,
-		}, nil
-	default:
-		return nil, errors.New(fmt.Sprintf("Installer '%s' doesn't exist", name))
-	}
-}
+const InstallerMakeInstaller = "make"
+const InstallerTerraformInstaller = "terraform"

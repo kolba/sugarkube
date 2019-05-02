@@ -19,6 +19,7 @@ package config
 import (
 	"github.com/pkg/errors"
 	"github.com/spf13/viper"
+	"github.com/sugarkube/sugarkube/internal/pkg/constants"
 	"os"
 	"os/user"
 	"path"
@@ -49,6 +50,7 @@ func initViper(appName string) *viper.Viper {
 	// global defaults
 	v.SetDefault("json-logs", false)
 	v.SetDefault("log-level", "info")
+	v.SetDefault("default-installer", constants.InstallerMakeInstaller)
 	v.SetDefault("num-workers", "5")
 	v.SetDefault("overwrite-merged-lists", false)
 

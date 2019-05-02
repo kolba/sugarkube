@@ -52,6 +52,7 @@ type Action struct {
 // A struct for an actual sugarkube.yaml file
 type KappConfig struct {
 	State              string
+	Installer          string                 // the name of the installer to use. If blank the globally configured default will be used
 	EnvVars            map[string]interface{} `yaml:"envVars"`
 	Version            string
 	Args               map[string]map[string]map[string]string

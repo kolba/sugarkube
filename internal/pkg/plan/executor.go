@@ -177,10 +177,10 @@ func registryWorker(dagObj *Dag, processCh <-chan NamedNode, doneCh chan<- Named
 		}
 
 		// kapp exists, Instantiate an installer in case we need it (for now, this will always be a Make installer)
-		installerImpl, err := installer.New(installer.MAKE, stackObj.GetProvider())
+		installerImpl, err := installer.New(installableObj.GetInstallerName(), stackObj.GetProvider())
 		if err != nil {
-			errCh <- errors.Wrapf(err, "Error instantiating installer for "+
-				"kapp '%s'", installableObj.Id())
+			errCh <- errors.Wrapf(err, "Error instantiating '%s' installer for "+
+				"kapp '%s'", installableObj.GetInstallerName(), installableObj.Id())
 			return
 		}
 
@@ -231,11 +231,11 @@ func worker(dagObj *Dag, processCh <-chan NamedNode, doneCh chan<- NamedNode, er
 			return
 		}
 
-		// kapp exists, Instantiate an installer in case we need it (for now, this will always be a Make installer)
-		installerImpl, err := installer.New(installer.MAKE, stackObj.GetProvider())
+		// kapp exists, Instantiate an installer in case we need it
+		installerImpl, err := installer.New(installableObj.GetInstallerName(), stackObj.GetProvider())
 		if err != nil {
-			errCh <- errors.Wrapf(err, "Error instantiating installer for "+
-				"kapp '%s'", installableObj.Id())
+			errCh <- errors.Wrapf(err, "Error instantiating '%s' installer for "+
+				"kapp '%s'", installableObj.GetInstallerName(), installableObj.Id())
 			return
 		}
 
@@ -369,10 +369,10 @@ func varsWorker(processCh <-chan NamedNode, doneCh chan<- NamedNode, errCh chan 
 		}
 
 		// kapp exists, Instantiate an installer in case we need it (for now, this will always be a Make installer)
-		installerImpl, err := installer.New(installer.MAKE, stackObj.GetProvider())
+		installerImpl, err := installer.New(installableObj.GetInstallerName(), stackObj.GetProvider())
 		if err != nil {
-			errCh <- errors.Wrapf(err, "Error instantiating installer for "+
-				"kapp '%s'", installableObj.Id())
+			errCh <- errors.Wrapf(err, "Error instantiating '%s' installer for "+
+				"kapp '%s'", installableObj.GetInstallerName(), installableObj.Id())
 			return
 		}
 

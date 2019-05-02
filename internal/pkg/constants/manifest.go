@@ -23,4 +23,3 @@ const TemplateNamespaceSeparator = "__"
 const WildcardCharacter = "*"
 
 const PresentKey = "present"
-const AbsentKey = "absent"

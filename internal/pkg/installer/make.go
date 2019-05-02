@@ -40,7 +40,7 @@ const TargetClean = "clean"
 
 // Return the name of this installer
 func (i MakeInstaller) Name() string {
-	return "make"
+	return constants.InstallerMakeInstaller
 }
 
 // Run the given make target
@@ -176,6 +176,6 @@ func (i MakeInstaller) Clean(installableObj interfaces.IInstallable, stack inter
 
 func (i MakeInstaller) GetVars(action string, approved bool) map[string]interface{} {
 	return map[string]interface{}{
-		"action":   action,
-		"approved": fmt.Sprintf("%v", approved)}
+		constants.InstallerAction:   action,
+		constants.InstallerApproved: fmt.Sprintf("%v", approved)}
 }
