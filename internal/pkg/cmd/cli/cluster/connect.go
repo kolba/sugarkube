@@ -24,6 +24,7 @@ import (
 	"github.com/sugarkube/sugarkube/internal/pkg/stack"
 	"github.com/sugarkube/sugarkube/internal/pkg/structs"
 	"io"
+	"log"
 	"time"
 )
 
@@ -113,9 +114,13 @@ func (c *connectCmd) run() error {
 		return errors.WithStack(err)
 	}
 
-	_, err = provisioner.IsAlreadyOnline(stackObj.GetProvisioner(), c.dryRun)
+	online, err := provisioner.IsAlreadyOnline(stackObj.GetProvisioner(), c.dryRun)
 	if err != nil {
 		return errors.WithStack(err)
+	}
+	if !online {
+		log.Fatalf("Cluster is not online. Unable to connect.")
+		return err
 	}
 
 	fmt.Printf("Connectivity established to the API server. Press " +
